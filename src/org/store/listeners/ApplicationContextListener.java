@@ -7,12 +7,9 @@ import java.io.*;
 public class ApplicationContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		ServletContext ctx = sce.getServletContext();
-		/*String url = ctx.getInitParameter("db_url");
+		String url = ctx.getInitParameter("db_url");
 		String user = ctx.getInitParameter("db_user");
-		String pass = ctx.getInitParameter("db_pass");*/
-		String url = "jdbc:mysql://localhost:3306/store";
-		String user = "root";
-		String pass = "yjc";
+		String pass = ctx.getInitParameter("db_pass");
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
