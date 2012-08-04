@@ -15,15 +15,6 @@ public class ApplicationContextListener implements ServletContextListener {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			Statement stat = conn.createStatement();
-			StringBuilder sb = new StringBuilder();
-			sb.append("create table if not exists Items");
-			sb.append(" (");
-			sb.append("item_id bigint auto_increment primary key,");
-			sb.append(" name char(255) not null,");
-			sb.append(" price double");
-			sb.append(")");
-			String query = sb.toString();
-			stat.executeUpdate(query);
 			ctx.setAttribute("conn", conn);
 		} catch (SQLException ex) {
 			System.out.println("can't set the connection");
