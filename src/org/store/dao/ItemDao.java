@@ -29,4 +29,38 @@ public class ItemDao {
 		}
 		return items;
 	}
+	
+	public Item getById(Long id) {
+		Item item = null;
+		try{
+			String query = "select * from Items where item_id = ?";
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setLong(1, id);
+			ResultSet result = st.executeQuery();
+			if (result.next()) {
+				item = new Item();
+				item.setId(result.getLong(1));
+				item.setName(result.getString(2));
+				item.setPrice(result.getDouble(3));
+			}
+			st.close();
+		} catch (SQLException ex){
+			System.out.println(ex.getMessage());
+		}
+		return item;
+	}
+	
+	public void update(Item item) {
+		try {
+			String query = "update Items set name = ?, price = ? where item_id = ?";
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setLong(3, item.getId());
+			st.setString(1, item.getName());
+			st.setDouble(2, item.getPrice());
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 }

@@ -14,7 +14,6 @@ public class ApplicationContextListener implements ServletContextListener {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			Statement stat = conn.createStatement();
 			ctx.setAttribute("conn", conn);
 		} catch (SQLException ex) {
 			System.out.println("can't set the connection");

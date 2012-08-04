@@ -8,7 +8,7 @@
 			<th>price</th>
 			<c:forEach items="${items}" var="item">
 				<tr>
-					<td>${item.id}</td>
+					<td><a href="<c:url value='/itemEdit.do?id=${item.id}'/>">${item.id}</a></td>
 					<td>${item.name}</td>
 					<td>${item.price}</td>
 				</tr>

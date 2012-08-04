@@ -30,5 +30,15 @@
     	<url-pattern>/items.do</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+    	<servlet-name>itemEditController</servlet-name>
+    	<servlet-class>org.store.controllers.ItemEditServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>itemEditController</servlet-name>
+    	<url-pattern>/itemEdit.do</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
 
