@@ -20,5 +20,15 @@
     	<listener-class>org.store.listeners.ApplicationContextListener</listener-class>
     </listener>
     
+    <servlet>
+    	<servlet-name>itemsListController</servlet-name>
+    	<servlet-class>org.store.controllers.ItemsListServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>itemsListController</servlet-name>
+    	<url-pattern>/items.do</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
 
