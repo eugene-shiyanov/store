@@ -1,7 +1,7 @@
 package org.store.models;
 
 public class Item {
-	private Long id;
+	private Long id = null;
 	private String name;
 	private Double price;
 	

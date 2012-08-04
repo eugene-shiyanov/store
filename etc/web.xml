@@ -40,5 +40,15 @@
     	<url-pattern>/itemEdit.do</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+    	<servlet-name>itemRemoveController</servlet-name>
+    	<servlet-class>org.store.controllers.ItemRemoveServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>itemRemoveController</servlet-name>
+    	<url-pattern>/itemRemove.do</url-pattern>
+    </servlet-mapping>    
+    
 </web-app>
 

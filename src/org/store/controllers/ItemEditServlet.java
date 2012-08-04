@@ -11,12 +11,17 @@ import org.store.models.Item;
 
 public class ItemEditServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException, NumberFormatException {
-		Long id = Long.parseLong(request.getParameter("id"));
-		ServletContext ctx = getServletContext();
-		Connection conn = (Connection) ctx.getAttribute("conn");
-		ItemDao itemDao = new ItemDao(conn);
-		Item item = itemDao.getById(id);
+		throws IOException, ServletException, NumberFormatException {		
+		Item item = null;
+		if (request.getParameter("id") != null) {
+			Long id = Long.parseLong(request.getParameter("id"));
+			ServletContext ctx = getServletContext();
+			Connection conn = (Connection) ctx.getAttribute("conn");
+			ItemDao itemDao = new ItemDao(conn);
+			item = itemDao.getById(id);	
+		} else {
+			item = new Item();
+		}
 		request.setAttribute("item", item);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/itemEdit.jsp");
 		dispatcher.forward(request, response);
@@ -27,18 +32,21 @@ public class ItemEditServlet extends HttpServlet {
 		ServletContext ctx = getServletContext();
 		Connection conn = (Connection) ctx.getAttribute("conn");
 		ItemDao itemDao = new ItemDao(conn);
-		Long id = Long.parseLong(request.getParameter("id"));
+		Long id = null;
+		if ((request.getParameter("id") != null) && !request.getParameter("id").isEmpty()) {
+			id = Long.parseLong(request.getParameter("id"));	
+		}
 		String name = request.getParameter("name");
 		Double price = Double.parseDouble(request.getParameter("price"));
 		Item item = new Item();
 		item.setId(id);
 		item.setName(name);
 		item.setPrice(price);
-		itemDao.update(item);
-		//List<Item> items = itemDao.getAll();
-		//request.setAttribute("items", items);
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/items.jsp");
-		//dispatcher.forward(request, response);
+		if (item.getId() == null) {
+			itemDao.save(item);
+		} else {
+			itemDao.update(item);
+		}
 		response.sendRedirect("/store/items.do");		
 	}
 }

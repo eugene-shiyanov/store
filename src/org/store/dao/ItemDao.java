@@ -15,7 +15,7 @@ public class ItemDao {
 		List<Item> items = new ArrayList<Item>();
 		try {
 			Statement stat = conn.createStatement();
-			ResultSet result = stat.executeQuery("select * from Items");
+			ResultSet result = stat.executeQuery("select * from Items order by item_id");
 			while(result.next()) {
 				Item item = new Item();
 				item.setId(result.getLong(1));
@@ -62,5 +62,30 @@ public class ItemDao {
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
+	}
+	
+	public void save(Item item) {
+		try {
+			String query = "insert into Items(name, price) values (?, ?)";
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setString(1, item.getName());
+			st.setDouble(2, item.getPrice());
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}			
+	}
+	
+	public void removeById(Long id) {
+		try {
+			String query = "delete from Items where item_id = ?";
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setLong(1, id);
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}	
 	}
 }
