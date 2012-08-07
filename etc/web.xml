@@ -48,7 +48,17 @@
     <servlet-mapping>
     	<servlet-name>itemRemoveController</servlet-name>
     	<url-pattern>/itemRemove.do</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>  
+
+	<servlet>
+		<servlet-name>storesListController</servlet-name>
+		<servlet-class>org.store.controllers.StoresListServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>storesListController</servlet-name>
+		<url-pattern>/stores.do</url-pattern>
+	</servlet-mapping>
     
 </web-app>
 

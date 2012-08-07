@@ -13,3 +13,7 @@ create table if not exists Items (
 insert into Items(name, price) values('CPU', 50.5);
 insert into Items(name, price) values('VGA', 60.6);
 insert into Items(name, price) values('HDD', 70.7);
+
+-- create the same for Stores
+create table if not exists Stores (stores_id bigint auto_increment primary key, name char(255) not null);
+insert into Stores (name) values ('Podval');
