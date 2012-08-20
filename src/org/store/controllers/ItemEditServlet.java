@@ -8,6 +8,7 @@ import java.util.*;
 
 import org.store.dao.ItemDao;
 import org.store.models.Item;
+import org.store.validation.ItemValidator;
 
 public class ItemEditServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,16 +38,25 @@ public class ItemEditServlet extends HttpServlet {
 			id = Long.parseLong(request.getParameter("id"));	
 		}
 		String name = request.getParameter("name");
-		Double price = Double.parseDouble(request.getParameter("price"));
+		Double price = null;
+		try {
+		    price = Double.parseDouble(request.getParameter("price"));
+		} catch (NumberFormatException ex) {
+		}
 		Item item = new Item();
 		item.setId(id);
 		item.setName(name);
 		item.setPrice(price);
-		if (item.getId() == null) {
-			itemDao.save(item);
+		ItemValidator validator = new ItemValidator();
+		validator.validate(item);
+		if (validator.hasErrors()) {
+		    request.setAttribute("item", item);
+		    request.setAttribute("errors", validator.getErrorMessages());
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/itemEdit.jsp");
+		    dispatcher.forward(request, response);
 		} else {
-			itemDao.update(item);
+		    itemDao.saveOrUpdate(item);
+		    response.sendRedirect("/store/items.do");		
 		}
-		response.sendRedirect("/store/items.do");		
 	}
 }
