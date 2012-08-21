@@ -59,6 +59,25 @@
 		<servlet-name>storesListController</servlet-name>
 		<url-pattern>/stores.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>storeEditController</servlet-name>
+		<servlet-class>org.store.controllers.StoreEditServlet</servlet-class>
+	</servlet>
     
+	<servlet-mapping>
+		<servlet-name>storeEditController</servlet-name>
+		<url-pattern>/storeEdit.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>storeRemoveController</servlet-name>
+		<servlet-class>org.store.controllers.StoreRemoveServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>storeRemoveController</servlet-name>
+		<url-pattern>/storeRemove.do</url-pattern>
+	</servlet-mapping>
 </web-app>
 
