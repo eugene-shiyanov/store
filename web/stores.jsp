@@ -14,6 +14,7 @@
 		</style>
 	</head>
 	<body>
+		<%@ include file="embeddable.jsp"%> <br>
 		<a href="<c:url value='/storeEdit.do'/>">Add new</a>
 		<table style="border: 1px solid black;">
 			<th>id</th>

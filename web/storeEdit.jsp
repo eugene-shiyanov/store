@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
+<html><body>
+	<%@ include file="embeddable.jsp"%> <br>
 	<form action="<c:url value='/storeEdit.do'/>" method="POST">
 		<input type="hidden" name="id" value="${store.id}">
 		<table>
@@ -17,4 +18,4 @@
 			</tr>
 		</table>
 	</form>
-</html>
+</body></html>
