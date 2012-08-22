@@ -50,7 +50,7 @@ public class ItemDao {
 	return item;
     }
 	
-    public void update(Item item) {
+    private void update(Item item) {
 	try {
 	    String query = "update Items set name = ?, price = ? where item_id = ?";
 	    PreparedStatement st = conn.prepareStatement(query);
@@ -64,7 +64,7 @@ public class ItemDao {
 	}
     }
 	
-    public void save(Item item) {
+    private void save(Item item) {
 	try {
 	    String query = "insert into Items(name, price) values (?, ?)";
 	    PreparedStatement st = conn.prepareStatement(query);
@@ -79,7 +79,11 @@ public class ItemDao {
 
     public void saveOrUpdate(Item item) {
 	if (item != null) {
-	    
+	    if (item.getId() == null) {
+		save(item);
+	    } else {
+		update(item);
+	    }
 	}
     }
     

@@ -21,7 +21,7 @@ public class ItemValidator {
 	if (item.getName() == null || item.getName().isEmpty()) {
 	    errorMessages.put("item.name", "name is required");
 	} else {
-	    if (item.getName().length() <= 255) {
+	    if (item.getName().length() >= 255) {
 		errorMessages.put("item.name", "name must be less than 255 signs");
 	    }
 	}
