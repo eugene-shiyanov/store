@@ -8,7 +8,7 @@ import java.sql.*;
 import org.store.dao.ItemDao;
 
 public class ItemRemoveServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException, NumberFormatException {
 			Long id = Long.parseLong(request.getParameter("id"));
 			ServletContext ctx = getServletContext();
