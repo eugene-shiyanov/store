@@ -56,7 +56,7 @@ public class ItemEditServlet extends HttpServlet {
 		    dispatcher.forward(request, response);
 		} else {
 		    itemDao.saveOrUpdate(item);
-		    response.sendRedirect("/store/items.do");		
+		    response.sendRedirect("items.do");		
 		}
 	}
 }
