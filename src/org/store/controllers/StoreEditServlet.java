@@ -43,7 +43,7 @@ public class StoreEditServlet extends HttpServlet {
 		} else {
 			storeDao.update(store);
 		}
-		response.sendRedirect("/store/stores.do");
+		response.sendRedirect("stores.do");
 	}
 
 }

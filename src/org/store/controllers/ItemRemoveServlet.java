@@ -15,6 +15,6 @@ public class ItemRemoveServlet extends HttpServlet {
 			Connection conn = (Connection) ctx.getAttribute("conn");
 			ItemDao itemDao = new ItemDao(conn);
 			itemDao.removeById(id);
-			response.sendRedirect("/store/items.do");
+			response.sendRedirect("items.do");
 		}
 }
