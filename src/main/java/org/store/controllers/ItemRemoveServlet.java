@@ -1,12 +1,17 @@
 package org.store.controllers;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
-import java.sql.*;
+import java.io.IOException;
+import java.sql.Connection;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.store.dao.ItemDao;
 
+@SuppressWarnings("serial")
 public class ItemRemoveServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException, NumberFormatException {

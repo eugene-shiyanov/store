@@ -1,15 +1,20 @@
 package org.store.controllers;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
-import java.sql.*;
-import java.util.*;
+import java.io.IOException;
+import java.sql.Connection;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.store.dao.ItemDao;
 import org.store.models.Item;
 import org.store.validation.ItemValidator;
 
+@SuppressWarnings("serial")
 public class ItemEditServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException, NumberFormatException {		

@@ -1,8 +1,12 @@
 package org.store.listeners;
 
-import javax.servlet.*;
-import java.sql.*;
-import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 public class ApplicationContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
