@@ -5,7 +5,7 @@
      <style type="text/css">
        .errors { color: red}
      </style>
-   </head
+   </head>
    <body>
 	<%@ include file="embeddable.jsp"%> <br>
      <form action="<c:url value='/itemEdit.do'/>" method="POST">

@@ -17,9 +17,11 @@
 		<%@ include file="embeddable.jsp"%> <br>
 		<a href="<c:url value='/storeEdit.do'/>">Add new</a>
 		<table style="border: 1px solid black;">
-			<th>id</th>
-			<th>name</th>
-			<th>actions</th>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>actions</th>
+			</tr>
 			<c:forEach items="${stores}" var="store">
 				<tr>
 					<td>${store.id}</td>

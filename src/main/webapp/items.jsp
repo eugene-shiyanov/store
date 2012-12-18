@@ -18,10 +18,12 @@
     <a href="<c:url value='/itemEdit.do'/>">Add new</a>
     <form action="<c:url value='/itemRemove.do'/>" method="POST">
     <table style="border: 1px solid black;">
-      <th>id</th>
-      <th>name</th>
-      <th>price</th>
-      <th>actions</th>
+    	<tr>
+	      <th>id</th>
+	      <th>name</th>
+	      <th>price</th>
+	      <th>actions</th>
+      	</tr>
       <c:forEach items="${items}" var="item">
 	<tr>
 	  <td>${item.id}</td>
