@@ -3,13 +3,11 @@
 <html>
   <head>
     <style  type="text/css">
-      table
-      {
-	  border-collapse:collapse;
+      table {
+	  	border-collapse:collapse;
       }
-      table, th, td
-      {
-	  border: 1px solid black;
+      table, th, td {
+	  	border: 1px solid black;
       }
     </style>
   </head>

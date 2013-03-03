@@ -7,7 +7,7 @@
      </style>
    </head>
    <body>
-	<%@ include file="embeddable.jsp"%> <br>
+	 <%@ include file="embeddable.jsp"%> <br>
      <form action="<c:url value='/itemEdit.do'/>" method="POST">
        <input type="hidden" name="id" value="${item.id}">
        <table>

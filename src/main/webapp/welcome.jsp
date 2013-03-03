@@ -1,1 +1,1 @@
-<html><body><%@ include file="embeddable.jsp"%> <br></body></html>
+<html>	<body>		<%@ include file="embeddable.jsp"%> <br>	</body></html>

@@ -15,7 +15,8 @@ import org.store.models.Store;
 
 @SuppressWarnings("serial")
 public class StoreEditServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, NumberFormatException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException, NumberFormatException {
 		Store store = null;
 		if (request.getParameter("id") != null) {
 			Long id = Long.parseLong(request.getParameter("id"));
@@ -31,7 +32,8 @@ public class StoreEditServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, NumberFormatException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException, NumberFormatException {
 		ServletContext ctx = getServletContext();
 		Connection conn = (Connection) ctx.getAttribute("conn");
 		StoreDao storeDao = new StoreDao(conn);
