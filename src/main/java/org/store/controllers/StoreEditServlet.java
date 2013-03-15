@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.store.dao.StoreDao;
 import org.store.models.Store;
+import org.store.validation.AbstractValidator;
+import org.store.validation.StoreValidator;
 
 @SuppressWarnings("serial")
 public class StoreEditServlet extends HttpServlet {
@@ -45,12 +47,17 @@ public class StoreEditServlet extends HttpServlet {
 		Store store = new Store();
 		store.setId(id);
 		store.setName(name);
-		if (store.getId() == null) {
-			storeDao.save(store);
+		AbstractValidator validator = new StoreValidator();
+		validator.validate(store);
+		if (validator.hasErrors()) {
+			request.setAttribute("store", store);
+			request.setAttribute("errors", validator.getErrorMessages());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/storeEdit.jsp");
+			dispatcher.forward(request, response);
 		} else {
-			storeDao.update(store);
+			storeDao.saveOrUpdate(store);
+			response.sendRedirect("stores.do");
 		}
-		response.sendRedirect("stores.do");
 	}
 
 }

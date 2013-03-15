@@ -49,7 +49,28 @@ public class StoreDao {
 		return store;
 	}
 
-	public void update(Store store) {
+	public void removeById(Long id) {
+		try {
+			String query = "DELETE FROM stores WHERE id = ?";
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setLong(1, id);
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	public void saveOrUpdate (Store store) {
+		if (store != null) {
+			if (store.getId() == null)
+				save(store);
+			else
+				update(store);
+		}
+	}
+	
+	private void update(Store store) {
 		try {
 			String query = "update stores set name = ? where id = ?";
 			PreparedStatement st = conn.prepareStatement(query);
@@ -61,24 +82,12 @@ public class StoreDao {
 			System.out.println(ex.getMessage());
 		}
 	}
-
-	public void save(Store store) {
+	
+	private void save(Store store) {
 		try {
 			String query = "insert into stores(name) values(?)";
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setString(1, store.getName());
-			st.executeUpdate();
-			st.close();
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
-
-	public void removeById(Long id) {
-		try {
-			String query = "DELETE FROM stores WHERE id = ?";
-			PreparedStatement st = conn.prepareStatement(query);
-			st.setLong(1, id);
 			st.executeUpdate();
 			st.close();
 		} catch (SQLException ex) {

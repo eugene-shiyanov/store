@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.store.dao.ItemDao;
 import org.store.models.Item;
+import org.store.validation.AbstractValidator;
 import org.store.validation.ItemValidator;
 
 @SuppressWarnings("serial")
@@ -52,7 +53,7 @@ public class ItemEditServlet extends HttpServlet {
 		item.setId(id);
 		item.setName(name);
 		item.setPrice(price);
-		ItemValidator validator = new ItemValidator();
+		AbstractValidator validator = new ItemValidator();
 		validator.validate(item);
 		if (validator.hasErrors()) {
 		    request.setAttribute("item", item);

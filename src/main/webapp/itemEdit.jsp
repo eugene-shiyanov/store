@@ -2,9 +2,7 @@
 
 <html>
    <head>
-     <style type="text/css">
-       .errors { color: red}
-     </style>
+	<link rel="stylesheet" href="css/main.css" type="text/css">
    </head>
    <body>
 	 <%@ include file="embeddable.jsp"%> <br>
