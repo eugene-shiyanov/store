@@ -13,13 +13,11 @@ import org.store.dao.StoreDao;
 
 @SuppressWarnings("serial")
 public class StoreRemoveServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, NumberFormatException {
-		Long id = Long.parseLong(request.getParameter("id"));
-		ServletContext ctx = getServletContext();
-		Connection conn = (Connection) ctx.getAttribute("conn");
-		StoreDao storeDao = new StoreDao(conn);
-		storeDao.removeById(id);
-		response.sendRedirect("stores.do");
-	}
-}	
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, NumberFormatException {
+        Long id = Long.parseLong(request.getParameter("id"));
+        StoreDao storeDao = new StoreDao();
+        storeDao.removeById(id);
+        response.sendRedirect("stores.do");
+    }
+}

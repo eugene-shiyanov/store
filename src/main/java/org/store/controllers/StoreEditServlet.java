@@ -17,47 +17,48 @@ import org.store.validation.StoreValidator;
 
 @SuppressWarnings("serial")
 public class StoreEditServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException, NumberFormatException {
-		Store store = null;
-		if (request.getParameter("id") != null) {
-			Long id = Long.parseLong(request.getParameter("id"));
-			ServletContext ctx = getServletContext();
-			Connection conn = (Connection) ctx.getAttribute("conn");
-			StoreDao storeDao = new StoreDao(conn);
-			store = storeDao.getById(id);
-		} else {
-			store = new Store();
-		}
-		request.setAttribute("store", store);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/storeEdit.jsp");
-		dispatcher.forward(request, response);
-	}
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException, NumberFormatException {
-		ServletContext ctx = getServletContext();
-		Connection conn = (Connection) ctx.getAttribute("conn");
-		StoreDao storeDao = new StoreDao(conn);
-		Long id = null;
-		if ((request.getParameter("id") != null) && !request.getParameter("id").isEmpty()) {
-			id = Long.parseLong(request.getParameter("id"));
-		}	
-		String name = request.getParameter("name");
-		Store store = new Store();
-		store.setId(id);
-		store.setName(name);
-		AbstractValidator validator = new StoreValidator();
-		validator.validate(store);
-		if (validator.hasErrors()) {
-			request.setAttribute("store", store);
-			request.setAttribute("errors", validator.getErrorMessages());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/storeEdit.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			storeDao.saveOrUpdate(store);
-			response.sendRedirect("stores.do");
-		}
-	}
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException, NumberFormatException {
+        Store store = null;
+
+        if (request.getParameter("id") != null) {
+            Long id = Long.parseLong(request.getParameter("id"));
+            StoreDao storeDao = new StoreDao();
+            store = storeDao.getById(id);
+        } else {
+            store = new Store();
+        }
+
+        request.setAttribute("store", store);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/storeEdit.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException, NumberFormatException {
+        StoreDao storeDao = new StoreDao();
+        Long id = null;
+
+        if ((request.getParameter("id") != null) && !request.getParameter("id").isEmpty()) {
+            id = Long.parseLong(request.getParameter("id"));
+        }
+
+        String name = request.getParameter("name");
+        Store store = new Store();
+        store.setId(id);
+        store.setName(name);
+        AbstractValidator validator = new StoreValidator();
+        validator.validate(store);
+
+        if (validator.hasErrors()) {
+            request.setAttribute("store", store);
+            request.setAttribute("errors", validator.getErrorMessages());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/storeEdit.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            storeDao.saveOrUpdate(store);
+            response.sendRedirect("stores.do");
+        }
+    }
 
 }

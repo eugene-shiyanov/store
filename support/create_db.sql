@@ -1,8 +1,16 @@
--- clear db
-DROP TABLE IF EXISTS items;
-DROP TABLE IF EXISTS stores;
-DROP TABLE IF EXISTS usergroups;
-DROP TABLE IF EXISTS users;
+-- delete database
+DROP DATABASE IF EXISTS store;
+
+-- delete user
+-- DROP USER 'javauser'@'localhost';
+
+-- create user
+GRANT ALL PRIVILEGES ON *.* TO 'javauser'@'localhost' IDENTIFIED BY 'javadude' WITH GRANT OPTION;
+
+-- create database
+CREATE DATABASE IF NOT EXISTS store;
+
+USE store;
 
 -- create tables
 CREATE TABLE IF NOT EXISTS items (
