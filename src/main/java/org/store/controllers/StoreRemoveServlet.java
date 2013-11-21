@@ -13,7 +13,7 @@ import org.store.dao.StoreDao;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/storeRemove.do")
 public class StoreRemoveServlet extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NumberFormatException {
         Long id = Long.parseLong(request.getParameter("id"));
         StoreDao storeDao = new StoreDao();

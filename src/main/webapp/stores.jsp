@@ -8,22 +8,25 @@
         <%@ include file="embeddable.jsp"%>
         <br>
         <a href="<c:url value='/storeEdit.do'/>">Add new</a>
-        <table>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>actions</th>
-            </tr>
-            <c:forEach items="${stores}" var="store">
+        <form action="<c:url value='/storeRemove.do'/>" method="POST">
+            <table>
                 <tr>
-                    <td>${store.id}</td>
-                    <td>${store.name}</td>
-                    <td>
-                        <a href="<c:url value='/storeEdit.do?id=${store.id}'/>">Edit</a><br>
-                        <a href="<c:url value='/storeRemove.do?id=${store.id}'/>">Remove</a>
-                    </td>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>actions</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${stores}" var="store">
+                    <tr>
+                        <td>${store.id}</td>
+                        <td>${store.name}</td>
+                        <td>
+                            <a href="<c:url value='/storeEdit.do?id=${store.id}'/>">Edit</a><br>
+                            <button name="id" value="${store.id}"
+                                    onclick="return confirm('Are you sure?');">Remove</button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
     </body>
 </html>
