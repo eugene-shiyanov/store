@@ -8,6 +8,6 @@ table {
     border-collapse: collapse;
 }
 
-table,th,td {
+.dataTable th, .dataTable td {
     border: 1px solid black;
 }

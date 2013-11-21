@@ -9,7 +9,7 @@
         <br>
         <a href="<c:url value='/storeEdit.do'/>">Add new</a>
         <form action="<c:url value='/storeRemove.do'/>" method="POST">
-            <table>
+            <table class="dataTable">
                 <tr>
                     <th>id</th>
                     <th>name</th>
