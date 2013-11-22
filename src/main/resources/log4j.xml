@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="application" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/logs/store/store.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+        <layout class="org.apache.log4j.TTCCLayout">
+            <param name="DateFormat" value="ABSOLUTE"/>
+        </layout>
+    </appender>
+    <appender name="error" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/logs/store/error.log"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+        <layout class="org.apache.log4j.TTCCLayout">
+            <param name="DateFormat" value="ABSOLUTE"/>
+        </layout>
+    </appender>
+    <logger name="org.store">
+        <level value="ERROR" />
+        <appender-ref ref="error"/>
+    </logger>
+    <root>
+        <priority value="TRACE"/>
+        <appender-ref ref="application"/>
+    </root>
+</log4j:configuration>
