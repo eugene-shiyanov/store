@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="store"
+    <Resource name="jdbc/store"
               auth="Container"
               type="javax.sql.DataSource"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
@@ -12,7 +12,7 @@
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/store"/>
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
-       dataSourceName="store"
+       dataSourceName="jdbc/store"
        userTable="users" userNameCol="login" userCredCol="password"
        userRoleTable="user_roles" roleNameCol="role_name"/>
 </Context>
