@@ -19,7 +19,7 @@ import org.store.validation.StoreValidator;
 public class StoreEditServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException, NumberFormatException {
-        Store store = null;
+        Store store;
 
         if (request.getParameter("id") != null) {
             Long id = Long.parseLong(request.getParameter("id"));
